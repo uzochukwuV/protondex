@@ -52,6 +52,11 @@ app.use(express.json())
 mongoose.set('strictQuery', false)
 mongoose.connect(process.env.ATLAS_URI, console.log('database is connected'))
 
+
+app.get("/", async (req, res)=> {
+  return res.json({ status: `Success` });
+})
+
 app.get('/api/verify', async (req, res) => {
   const token = req.headers['x-access-token']
   console.log("Verifying ......");
