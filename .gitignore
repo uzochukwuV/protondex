@@ -1,6 +1,6 @@
 # Created by https://www.toptal.com/developers/gitignore/api/node
 # Edit at https://www.toptal.com/developers/gitignore?templates=node
-
+*.env
 ### Node ###
 # Logs
 logs
@@ -89,7 +89,7 @@ out
 # Nuxt.js build / generate output
 .nuxt
 
-
+.env
 # Gatsby files
 .cache/
 # Comment in the public line in if your project uses Gatsby and not Next.js
