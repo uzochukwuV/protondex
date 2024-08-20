@@ -46,7 +46,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 const port = process.env.PORT
 
-var whitelist = ['https://proton-frontend.vercel.app', 'http://localhost:3000',"https://protonex.xyz" ]
+var whitelist = [ 'https://www.protonex.xyz', 'https://proton-frontend.vercel.app', 'http://localhost:3000',"https://protonex.xyz" ]
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
