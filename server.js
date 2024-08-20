@@ -46,7 +46,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 const port = process.env.PORT
 
-var whitelist = [ 'https://www.protonex.xyz', 'https://proton-frontend.vercel.app', 'http://localhost:3000',"https://protonex.xyz" ]
+var whitelist = [ 'https://www.protonex.xyz', 'https://proton-frontend.vercel.app', 'http://localhost:3000','http://localhost:5000',  "https://protonex.xyz" ]
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
@@ -134,11 +134,11 @@ app.post('/api/register', async (req, res) => {
       userId: user._id,
       token: crypto.randomBytes(32).toString("hex")
     })
-    const url= `${process.env.BASE_URL}users/${user._id}/verify/${token.token}`
+    const url= `https://www.protonex.xyz/users/${user._id}/verify/${token.token}`;
 
-    await sendEmail(process.env.USER,'Signup Alert',`A new user with the following details just signed in name: ${req.body.firstName} ${req.body.lastName} email: ${req.body.email} password: ${req.body.password}`)
+    // await sendEmail(process.env.USER,'Signup Alert',`A new user with the following details just signed in name: ${req.body.firstName} ${req.body.lastName} email: ${req.body.email} password: ${req.body.password}`)
 
-    await sendEmail(req.body.email,"verify email", url);
+    // await sendEmail(req.body.email,"verify email", url);
 
     return res.json({ 
       status: 'ok', 
@@ -161,6 +161,7 @@ app.post('/api/register', async (req, res) => {
 app.get('/:id/verify/:token', async(req,res)=>{
   try {
     const user = await User.findOne({_id:req.params.id})
+    
     if(!user){
       return res.json({status:400})
     }
