@@ -121,12 +121,13 @@ app.post('/api/register', async (req, res) => {
       investment: [],
       transaction: [],
       withdraw: [],
-      rememberme:false,
+      rememberme:true,
       referral: crypto.randomBytes(32).toString("hex"),
       refBonus:0,
       referred:[],
       periodicProfit:0,
-      role: 'user'
+      role: 'user',
+      verified:true
     });
     
     let user = await User.findOne({email:req.body.email})
